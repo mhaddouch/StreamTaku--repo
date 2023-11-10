@@ -1,0 +1,33 @@
+{
+  "name": "streamtaku-web-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/streamtaku-web-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/streamtaku-web-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "streamtaku-web:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "streamtaku-web:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "streamtaku-web:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/streamtaku-web-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["streamtaku-web"]
+}
