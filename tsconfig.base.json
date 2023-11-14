@@ -26,6 +26,9 @@
       "@avans-nx-individueel/streamtaku/features": [
         "libs/streamtaku/features/src/index.ts"
       ],
+      "@avans-nx-individueel/streamtaku/user": [
+        "libs/streamtaku/user/src/index.ts"
+      ],
       "@avans-nx-individueel/ui": ["libs/streamtaku/ui/src/index.ts"]
     }
   },

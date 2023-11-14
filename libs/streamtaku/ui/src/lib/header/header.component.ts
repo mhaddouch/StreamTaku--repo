@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'avans-nx-individueel-header',
   templateUrl: './header.component.html',
