@@ -19,7 +19,10 @@
           "apps/streamtaku-web/src/favicon.ico",
           "apps/streamtaku-web/src/assets"
         ],
-        "styles": ["apps/streamtaku-web/src/styles.css"],
+        "styles": [
+          "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "apps/streamtaku-web/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
