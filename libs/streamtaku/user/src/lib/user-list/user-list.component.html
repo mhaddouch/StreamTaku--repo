@@ -1,9 +1,27 @@
-<div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Details</th>
+    </tr>
+  </thead>
   <tbody>
+    <tr></tr>
     <tr *ngFor="let user of users">
       <td>{{ user.id }}</td>
-      <td>{{ user.userName }} {{ user.emailAdress }}</td>
+      <td>{{ user.userName }}</td>
       <td>{{ user.emailAdress }}</td>
+      <td>
+        <a
+          class="btn btn-primary"
+          routerLink="{{ user.id }}"
+          routerLinkActive="actieve-link"
+          role="button"
+          >Details</a
+        >
+      </td>
     </tr>
   </tbody>
-</div>
+</table>
