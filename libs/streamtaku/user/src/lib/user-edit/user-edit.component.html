@@ -1,4 +1,4 @@
-<h2>{{ user?.userName }}</h2>
+<h2>{{ user$ }}</h2>
 
 <form
   #usereditForm="ngForm"
@@ -10,6 +10,8 @@
     <label for="formGroupExampleInput">Username</label>
     <input
       type="text"
+      [(ngModel)]="user.userName"
+      name="userName"
       class="form-control"
       id="formGroupExampleInput"
       placeholder="Username"
@@ -19,10 +21,12 @@
     <label for="exampleFormControlInput1">Email address</label>
     <input
       type="email"
+      [(ngModel)]="user.emailAdress"
+      name="email"
       class="form-control"
       id="exampleFormControlInput1"
       placeholder="name@example.com"
     />
   </div>
-  <a class="btn btn-primary" role="button" (click)="save()">Save</a>
+  <button class="btn btn-primary" (click)="onSubmit()">Save</button>
 </form>

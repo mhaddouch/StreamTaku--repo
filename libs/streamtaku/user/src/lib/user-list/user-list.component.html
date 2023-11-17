@@ -9,14 +9,14 @@
   </thead>
   <tbody>
     <tr></tr>
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.userName }}</td>
-      <td>{{ user.emailAdress }}</td>
+    <tr *ngFor="let user of this.users$ | async">
+      <td>{{ user?.id }}</td>
+      <td>{{ user?.userName }}</td>
+      <td>{{ user?.emailAdress }}</td>
       <td>
         <a
           class="btn btn-primary"
-          routerLink="{{ user.id }}"
+          routerLink="{{ user?.id }}"
           routerLinkActive="actieve-link"
           role="button"
           >Details</a

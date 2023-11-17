@@ -11,7 +11,7 @@ import { Observable, Subscription, of, switchMap, tap } from 'rxjs';
 })
 export class UserEditComponent {
   userId: string | null = null;
-  user: User | null = null;
+  user!: User;
   user$: Observable<User> | undefined;
   subscription?: Subscription;
   constructor(
@@ -48,21 +48,22 @@ export class UserEditComponent {
           } else {
             // You may want to return some observable based on the ID
             // For now, let's return an observable with the user itself
-            return of(this.userService.getById(params.get('id'), 10));
+            return this.userService.getById(params.get('id'));
           }
         }),
         tap(console.log)
       )
-      .subscribe((user:User) => {
+      .subscribe((user: User) => {
         // Handle the subscribed user here
         this.user = user;
+        console.log(this.user);
       });
   }
 
-  save() {
+  /* save() {
     console.log('Hier komt je save actie');
     this.router.navigate(['..'], { relativeTo: this.route });
-  }
+  } */
   onSubmit(): void {
     console.log('onsubmit', this.user);
 
