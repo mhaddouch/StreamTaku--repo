@@ -76,7 +76,9 @@ export class UserService {
     return of(user);
   }
   delete(user: User): Observable<User> {
+    console.log(user);
     let index = this.users.findIndex((u) => u.id == user.id);
+
     let elementsToRemove = 1;
     this.users.splice(index, elementsToRemove);
 

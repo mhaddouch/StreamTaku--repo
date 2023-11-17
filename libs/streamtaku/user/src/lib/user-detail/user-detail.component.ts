@@ -12,7 +12,6 @@ import { Observable, delay, switchMap, tap } from 'rxjs';
 })
 export class UserDetailComponent implements OnInit, OnDestroy {
   userId: string | null = null;
-  user!: User;
   user$: Observable<User> | undefined;
 
   constructor(
@@ -56,14 +55,16 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     const userid = this.route.snapshot.params['id'];
     const id = this.userId;
 
-    if (this.userId !== null) {
-      console.log('delete user');
-      this.userService
-        .delete(this.user)
-        .subscribe(() =>
-          this.router.navigate(['..'], { relativeTo: this.route })
-        );
-    }
+    this.user$
+      ?.pipe(switchMap((user) => this.userService.delete(user)))
+      .subscribe(() =>
+        this.router.navigate(['..'], { relativeTo: this.route })
+      );
+    console.log('delete user');
+    this.user$?.subscribe((user) => this.userService.delete(user));
+
+    /* .delete(this.user)
+     */
 
     // Call the delete method from your user service
   }

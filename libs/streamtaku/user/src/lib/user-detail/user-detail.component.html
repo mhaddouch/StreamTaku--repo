@@ -1,9 +1,4 @@
-<form
-  #usereditForm="ngForm"
-  name="form"
-  (ngSubmit)="usereditForm.form.valid || onDelete()"
-  novalidate
->
+
   <div *ngIf="user$ | async as user">
     <tbody>
       <td>{{ user?.id }}</td>
@@ -17,6 +12,6 @@
       >Edit</a
     >
 
-    <button class="btn btn-primary" (click)="onDelete()">Save</button>
+    <button class="btn btn-primary" (click)="onDelete()">Delete</button>
   </div>
-</form>
+
