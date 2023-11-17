@@ -1,13 +1,22 @@
-<div *ngIf="user$ | async as user">
-  <tbody>
-    <td>{{ user?.id }}</td>
-    <td>{{ user?.userName }} {{ user?.emailAdress }}</td>
-  </tbody>
-  <a
-    class="btn btn-primary"
-    routerLink="edit"
-    routerLinkActive="actieve-link"
-    role="button"
-    >Details</a
-  >
-</div>
+<form
+  #usereditForm="ngForm"
+  name="form"
+  (ngSubmit)="usereditForm.form.valid || onDelete()"
+  novalidate
+>
+  <div *ngIf="user$ | async as user">
+    <tbody>
+      <td>{{ user?.id }}</td>
+      <td>{{ user?.userName }} {{ user?.emailAdress }}</td>
+    </tbody>
+    <a
+      class="btn btn-primary"
+      routerLink="edit"
+      routerLinkActive="actieve-link"
+      role="button"
+      >Edit</a
+    >
+
+    <button class="btn btn-primary" (click)="onDelete()">Save</button>
+  </div>
+</form>

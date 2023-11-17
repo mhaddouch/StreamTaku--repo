@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { UserService } from '../user,service';
 import { User } from '../user.model';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
@@ -11,13 +11,14 @@ import { Observable, delay, switchMap, tap } from 'rxjs';
   styleUrls: ['./user-detail.component.css'],
 })
 export class UserDetailComponent implements OnInit, OnDestroy {
-  /*  userId: string | null = null;
-  user: User | null = null; */
+  userId: string | null = null;
+  user!: User;
   user$: Observable<User> | undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   /* ngOnInit(): void {
@@ -43,4 +44,27 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     );
   }
   ngOnDestroy(): void {}
+
+  /* onDelete(): void {
+    if (this.user?.id) {
+      console.log('delete user');
+      this.userService.delete(this.user);
+    }
+  } */
+
+  onDelete() {
+    const userid = this.route.snapshot.params['id'];
+    const id = this.userId;
+
+    if (this.userId !== null) {
+      console.log('delete user');
+      this.userService
+        .delete(this.user)
+        .subscribe(() =>
+          this.router.navigate(['..'], { relativeTo: this.route })
+        );
+    }
+
+    // Call the delete method from your user service
+  }
 }

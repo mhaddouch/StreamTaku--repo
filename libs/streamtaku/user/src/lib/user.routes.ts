@@ -6,6 +6,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', component: UserListComponent },
+  { path: 'create', pathMatch: 'full', component: UserEditComponent },
   { path: ':id', pathMatch: 'full', component: UserDetailComponent },
   { path: ':id/edit', pathMatch: 'full', component: UserEditComponent },
 ];
