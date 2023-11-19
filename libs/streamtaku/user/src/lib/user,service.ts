@@ -69,4 +69,19 @@ export class UserService {
     // hoeft niet te werken voor TT1
     return of(user);
   }
+
+  create(user: User): Observable<User> {
+    user.id = this.users.length.toString();
+    this.users.push(user);
+    return of(user);
+  }
+  delete(user: User): Observable<User> {
+    console.log(user);
+    let index = this.users.findIndex((u) => u.id == user.id);
+
+    let elementsToRemove = 1;
+    this.users.splice(index, elementsToRemove);
+
+    return of(user);
+  }
 }

@@ -1,13 +1,26 @@
-<div *ngIf="user$ | async as user">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
   <tbody>
-    <td>{{ user?.id }}</td>
-    <td>{{ user?.userName }} {{ user?.emailAdress }}</td>
+    <tr></tr>
+    <tr *ngIf="user$ | async as user">
+      <td>{{ user?.id }}</td>
+      <td>{{ user?.userName }}</td>
+      <td>{{ user?.emailAdress }}</td>
+    </tr>
+
+    <a
+      class="btn btn-primary"
+      routerLink="edit"
+      routerLinkActive="actieve-link"
+      role="button"
+      >Edit</a
+    >
+    <button class="btn btn-primary" (click)="onDelete()">Delete</button>
   </tbody>
-  <a
-    class="btn btn-primary"
-    routerLink="edit"
-    routerLinkActive="actieve-link"
-    role="button"
-    >Details</a
-  >
-</div>
+</table>

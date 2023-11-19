@@ -74,6 +74,8 @@ export class UserEditComponent {
         .subscribe(() =>
           this.router.navigate(['..'], { relativeTo: this.route })
         );
+    } else {
+      this.userService.create(this.user);
     }
   }
 }
