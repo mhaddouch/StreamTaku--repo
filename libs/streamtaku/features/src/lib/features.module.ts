@@ -7,5 +7,6 @@ import { AboutComponent } from './about/about.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [AnimeListComponent, AnimeDetailComponent, AboutComponent],
+  exports: [AboutComponent],
 })
 export class FeaturesModule {}

@@ -78,6 +78,4 @@ export class UserEditComponent {
       this.userService.create(this.user);
     }
   }
-
-  
 }
