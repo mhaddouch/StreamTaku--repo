@@ -19,6 +19,7 @@
       "@avans-nx-individueel/backend/features": [
         "libs/backend/features/src/index.ts"
       ],
+      "@avans-nx-individueel/backend/user": ["libs/backend/user/src/index.ts"],
       "@avans-nx-individueel/shared/api": ["libs/shared/api/src/index.ts"],
       "@avans-nx-individueel/streamtaku/common": [
         "libs/streamtaku/common/src/index.ts"

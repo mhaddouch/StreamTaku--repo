@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AnimeListComponent } from './anime-list.component';
+import { AnimeEditComponent } from './anime-edit.component';
 
-describe('AnimeListComponent', () => {
-  let component: AnimeListComponent;
-  let fixture: ComponentFixture<AnimeListComponent>;
+describe('AnimeEditComponent', () => {
+  let component: AnimeEditComponent;
+  let fixture: ComponentFixture<AnimeEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AnimeListComponent],
+      declarations: [AnimeEditComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AnimeListComponent);
+    fixture = TestBed.createComponent(AnimeEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -19,4 +19,3 @@ describe('AnimeListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
