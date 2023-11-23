@@ -31,7 +31,7 @@ jobs:
         run: |
           echo ${GITHUB_WORKSPACE}
           cd ${GITHUB_WORKSPACE}/dist/apps/streamtaku-web/ && zip ${GITHUB_WORKSPACE}/streamtaku-web-release.zip ./* -r
-          # cd ${GITHUB_WORKSPACE}/dist/apps/backend-api/ && zip ${GITHUB_WORKSPACE}/backend-api-release.zip ./* -r
+          cd ${GITHUB_WORKSPACE}/dist/apps/data-api/ && zip ${GITHUB_WORKSPACE}/data-api-release.zip ./* -r
 
       - name: Upload streamtaku-web artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -39,11 +39,11 @@ jobs:
           name: streamtaku-web
           path: streamtaku-web-release.zip
 
-    #  - name: Upload backend-api artifact for deployment job
-    #   uses: actions/upload-artifact@v3
-    #  with:
-    #    name: backend-api
-    #   path: backend-api-release.zip
+      - name: Upload data-api artifact for deployment job
+      uses: actions/upload-artifact@v3
+     with:
+        name: data-api
+       path: data-api-release.zip
 
   deploy-frontend-app:
     runs-on: ubuntu-latest
@@ -70,4 +70,33 @@ jobs:
           app_location: '/' # App source code path
           api_location: '' # Api source code path - optional
           output_location: '' # Built app content directory - optional
+
+
+          deploy-backend-api:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: data-api
+
+      - name: Unzip artifact for deployment
+        run: unzip backend-api-release.zip
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'StreamTakuWebApp'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.NEXTJS_PUBLISHPROFILE }}
+          package: .
 
