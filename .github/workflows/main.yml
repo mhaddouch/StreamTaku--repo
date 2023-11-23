@@ -38,8 +38,8 @@ jobs:
           name: streamtaku-web
           path: streamtaku-web-release.zip
 
-      -  `name: Upload data-api artifact for deployment job
-         `uses: actions/upload-artifact@v3
+      -`name: Upload data-api artifact for deployment job
+        uses: actions/upload-artifact@v3
      ```with:
         ``name: data-api
        ```path: data-api-release.zip
