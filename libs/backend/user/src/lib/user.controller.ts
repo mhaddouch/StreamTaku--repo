@@ -18,4 +18,10 @@ export class UsersController {
   async getData() {
     return await this.usersService.findAll();
   }
+
+  @Post()
+  async create(@Body() newUser: User) : Promise<User> {
+    return await this.usersService.create(newUser);
+  }
+
 }
