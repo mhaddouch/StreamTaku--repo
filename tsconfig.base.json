@@ -15,9 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@avans-nx-individueel/backend/auth": ["libs/backend/auth/src/index.ts"],
       "@avans-nx-individueel/backend/dto": ["libs/backend/dto/src/index.ts"],
       "@avans-nx-individueel/backend/features": [
         "libs/backend/features/src/index.ts"
+      ],
+      "@avans-nx-individueel/backend/schemas": [
+        "libs/backend/schemas/src/index.ts"
       ],
       "@avans-nx-individueel/backend/user": ["libs/backend/user/src/index.ts"],
       "@avans-nx-individueel/shared/api": ["libs/shared/api/src/index.ts"],
