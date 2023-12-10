@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './shema/user.schema';
+import { User, UserSchema } from '@avans-nx-individueel/backend/schemas';
 import { UserService } from './user.service';
 import { UsersController } from './user.controller';
 
@@ -10,6 +10,6 @@ import { UsersController } from './user.controller';
   ],
   controllers: [UsersController],
   providers: [UserService],
-  exports: [],
+  exports: [UserService],
 })
 export class UserModule {}
