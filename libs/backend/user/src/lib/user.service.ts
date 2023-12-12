@@ -2,7 +2,10 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from '../../../schemas/src/lib/user.schema';
-import { CreateUserDto } from '@avans-nx-individueel/backend/dto';
+import {
+  CreateUserDto,
+  UpdateUserDto,
+} from '@avans-nx-individueel/backend/dto';
 import { HttpException, HttpStatus } from '@nestjs/common';
 
 @Injectable()
@@ -38,7 +41,7 @@ export class UserService {
     return await newUser.save();
   }
 
-  async update(id: string, user: CreateUserDto): Promise<User> {
+  async update(id: string, user: UpdateUserDto): Promise<User> {
     const result = await this.userModel.findByIdAndUpdate(id, user, {
       new: true,
     });

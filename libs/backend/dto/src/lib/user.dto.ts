@@ -5,6 +5,7 @@ import {
   IsIn,
   IsMongoId,
   IsNotEmpty,
+  IsOptional,
   IsString,
   IsUrl,
   MinLength,
@@ -39,6 +40,36 @@ export class CreateUserDto implements IUserLogin {
   @IsUrl()
   profileImgUrl!: string;
 
+  @IsString()
+  @IsNotEmpty()
+  @IsEnum(UserRole)
+  role: UserRole = UserRole.Unknown;
+}
+
+export class UpdateUserDto implements IUserLogin {
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
+  name!: string;
+
+  @IsOptional()
+  @IsEmail()
+  @IsNotEmpty()
+  emailAddress!: string;
+  @IsOptional()
+  @MinLength(10, {
+    message: 'password is too short',
+  })
+  @IsNotEmpty()
+  @IsString()
+  password!: string;
+
+  @IsOptional()
+  @IsString()
+  @IsUrl()
+  profileImgUrl!: string;
+
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   @IsEnum(UserRole)

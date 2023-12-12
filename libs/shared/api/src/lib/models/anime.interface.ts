@@ -16,11 +16,17 @@ export interface IAnime {
   _id: string;
   title: string;
   genre: Genre;
-  writer:string;
+  writer: string;
   publisher: Pick<IUser, '_id' | 'name'>;
   publishedDate: Date;
-  episodes: IEpisode[];
+  animeImageUrl: string;
 }
 
-export type ICreateAnime = Pick<IAnime, 'title' | 'genre'|'writer'>;
-export type IUpdateAnime = Pick<IAnime, 'title' | 'genre'|'writer'>;
+export type ICreateAnime = Pick<
+  IAnime,
+  'title' | 'genre' | 'writer' | 'animeImageUrl'
+>;
+export type IUpdateAnime = Pick<
+  IAnime,
+  'title' | 'genre' | 'writer' | 'animeImageUrl'
+>;
