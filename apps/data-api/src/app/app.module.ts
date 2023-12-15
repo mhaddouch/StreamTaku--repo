@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from '@avans-nx-individueel/backend/user';
 import { AuthModule } from '@avans-nx-individueel/backend/auth';
+import { AnimeModule } from '@avans-nx-individueel/backend/features';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AuthModule } from '@avans-nx-individueel/backend/auth';
     ),
     UserModule,
     AuthModule,
+    AnimeModule,
   ],
 })
 export class AppModule {}

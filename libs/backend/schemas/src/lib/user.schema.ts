@@ -44,7 +44,7 @@ export class User implements IUser {
   @Prop({
     required: false,
     type: String,
-    default: UserRole.Guest,
+    default: UserRole.Guest, // alle validatie moet in de schemas weg
   })
   role: UserRole = UserRole.Guest;
 }

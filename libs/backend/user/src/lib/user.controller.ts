@@ -13,10 +13,9 @@ import { IUser } from '@avans-nx-individueel/shared/api';
 import { Public } from '@avans-nx-individueel/backend/auth';
 import { CreateUserDto } from '@avans-nx-individueel/backend/dto';
 
-@Controller()
+@Controller('user')
 export class UsersController {
   constructor(private readonly usersService: UserService) {}
-
   @Get()
   async getData() {
     return await this.usersService.findAll();
