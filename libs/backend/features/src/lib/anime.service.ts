@@ -36,11 +36,8 @@ export class AnimeService {
     return anime;
   }
 
-
-
-  
   async create(userId: string, anime: CreateAnimeDto): Promise<Anime> {
-    userId = '655f1f8f073d62d89725e16b';
+    //userId = '655f1f8f073d62d89725e16b';
     const publisher = await this.userModel.findById(userId).exec();
     console.log('Publisher:', publisher);
     if (!publisher) {
@@ -49,9 +46,13 @@ export class AnimeService {
 
     const newAnime = new this.animeModel({
       ...anime,
+      publisher: publisher,
       publishedDate: new Date(),
     });
-    return await newAnime.save();
+
+    const result = await newAnime.save();
+
+    return result;
   }
 
   async update(id: string, anime: UpdateAnimeDto): Promise<AnimeDocument> {

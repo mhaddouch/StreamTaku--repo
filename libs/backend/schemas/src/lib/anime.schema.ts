@@ -11,7 +11,9 @@ import { User } from './user.schema';
 
 export type AnimeDocument = HydratedDocument<Anime>;
 
-export class Anime implements IAnime {
+// export class Anime implements IAnime {
+@Schema()
+export class Anime {
   _id!: string;
   @Prop({ required: true })
   title!: string;

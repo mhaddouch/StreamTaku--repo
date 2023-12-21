@@ -33,9 +33,6 @@ export class AnimeController {
     return await this.animeService.findAll();
   }
 
-
-
-  
   @Public()
   @Get(':id')
   async getId(@Param('id') id: string): Promise<IAnime> {
@@ -49,9 +46,9 @@ export class AnimeController {
     @User() user: AuthUser
   ): Promise<IAnime> {
     try {
-      console.log('Anime:', newAnime); // Add this line for debugging
+      // console.log('Anime:', newAnime); // Add this line for debugg~ing
       console.log('User:', user);
-      return await this.animeService.create(user.id, newAnime);
+      return await this.animeService.create(user.sub, newAnime);
     } catch (error) {
       console.error('Error in AnimeController.create:', error);
       throw error; // Rethrow the error to maintain the 500 response
